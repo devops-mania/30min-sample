@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - 0.8
+script:
 notifications:
   slack: devopsmania:08LbbfEWc7zCSBNBn1Bqwvhe_
   
