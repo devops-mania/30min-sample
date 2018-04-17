@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-  - 0.8
+  - 9.5
 script:
+  - node app/example.js &
+  - npm test
 notifications:
   slack: devopsmania:08LbbfEWc7zCSBNBn1Bqwvhe
