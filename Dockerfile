@@ -1,4 +1,4 @@
-FROM node:9
+FROM node:9-alpine
 
 ADD app ./app/
 CMD node ./app/example.js
