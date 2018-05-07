@@ -19,7 +19,8 @@ before_deploy:
   - sudo pip install awscli
   - aws --version
 deploy:
-  - provider: script
-    on:
-      branch: master
-    script: ./scripts/deploy-to-aws-ecs.sh
+  provider: script
+  script:
+    - sh ./scripts/deploy-to-aws-ecs.sh
+  on:
+    branch: master
