@@ -1,8 +1,3 @@
-#!/bin/bash
-set -o errexit
-set -o nounset
-set -o pipefail
-
 docker build . -t test
 
 awsAccountId=$(aws sts get-caller-identity | sed s/\"/\\n/g | grep "^[0-9]*$")
