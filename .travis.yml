@@ -6,3 +6,20 @@ script:
   - npm test
 notifications:
   slack: devopsmania:08LbbfEWc7zCSBNBn1Bqwvhe
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=AKIAJBSKAO57HLEFK6QA
+    # AWS_SECRET_ACCESS_KEY
+    - secure: "MP5tM99B60If9p9SyniPidbMpF6WAfdRWUIWkItgXGvrNCTRVR3o3wMhUg09T+66yl6eZShnND4VKZexD3yamfpD3ihHslgjEfm1OTsJWdZWyG1x5Ik3AleCcZsB4DR1AD+r1kHMOpgE8Z39cuuP+OmPfXAkV3zDtli1S+LI9XO3sUye/+zqaJibMatU5veByJ3ZYgYXnUeA1rYRwQ/imVCU35N/iWGE2U9yrYJHxq6BKqA/s8lnSg+l/wc7r96QHz4T3VRZA3pusWpEST7klLWg/9e+OQ8eZXMvFiNiBaKEdj0s6wO6BD5n6/IlFpiUzpIHD3qLTZ2uFbvJSa8CEa2HLlLrIL8I94xii8VYXZR8xIpgishFJVq0GbhSo6Z41svdr8CG+LDGb2AKYWM83vqsZ33GVG6z8KFlbTmPgcu7AQFEWl5G34ncEqCrqrJapMDfk/ibs60xtahscNIZMQXuM7Cp9gA1/5SukVFsZWdYXuQ0xwuPxwraBhxeUXTiBcdn3Uu56Y8/lRRvC9xrR6IeFk+WK62AiUoGY1dItem360zgvPzfoiMHH388xXZZF7BMMhHQERFnFr0X6zbA9Z01uYu2JgOZ+avu8z1EMlJs+q3CoIIQ1mIHadLLTol85uNwAo+qpbQFI0QNHHJLvghZ+qC5xd0V25YMlilp7fI="
+    - AWS_DEFAULT_REGION=ap-northeast-1
+    - ECS_REPO=devops30min
+before_deploy:
+  - sudo apt-get update
+  - sudo apt-get install -y python-pip
+  - sudo pip install awscli
+  - aws --version
+deploy:
+  - provider: script
+    on:
+      branch: master
+    script: ./scripts/deploy-to-aws-ecs.sh
